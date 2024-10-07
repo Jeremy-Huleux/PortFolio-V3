@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .middle-blue-font {
   color: #00f6ed !important;
 }
@@ -44,7 +45,84 @@
 }
 /*
 
-new css
+background
+
+*/
+/* Le container qui contient tout le background */
+/* Conteneur pour la neige */
+.snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* La neige n'interagit pas avec les clics */
+}
+
+/* Flocon de neige générique */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  animation: fall var(--duration) linear infinite;
+  animation-delay: var(--delay); /* Délai aléatoire d'apparition */
+  opacity: var(--opacity);
+}
+
+/* Animation de chute de neige */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+/* Créer plusieurs flocons avec différentes tailles et vitesses */
+.snowflake:nth-child(1) {
+  left: 10%;
+  animation-duration: 8s;
+  width: 6px;
+  height: 6px;
+}
+
+.snowflake:nth-child(2) {
+  left: 30%;
+  animation-duration: 6s;
+  width: 8px;
+  height: 8px;
+}
+
+.snowflake:nth-child(3) {
+  left: 50%;
+  animation-duration: 10s;
+  width: 10px;
+  height: 10px;
+}
+
+.snowflake:nth-child(4) {
+  left: 70%;
+  animation-duration: 7s;
+  width: 5px;
+  height: 5px;
+}
+
+.snowflake:nth-child(5) {
+  left: 90%;
+  animation-duration: 9s;
+  width: 7px;
+  height: 7px;
+}
+
+/*
+
+Structure SCSS
+
 */
 /*!
  * Start Bootstrap - Agency Bootstrap Theme (https://startbootstrap.com)
@@ -303,17 +381,17 @@ fieldset[disabled] .btn-xl.active {
     font-size: 1.5em;
   }
 }
+.parallax-window {
+  min-height: 400px;
+  background: transparent;
+}
+
 header {
   text-align: center;
   color: #fff;
-  background-attachment: scroll;
-  background-image: url(https://www.tourisme-en-hautsdefrance.com/app/uploads/crt-hautsdefrance/2022/11/thumbs/Lille-terrasses-illuminees-de-la-Grand-Place-CRT-Hauts-de-France-Nicolas-Bryant-640x360.jpg);
-  background-position: center center;
-  background-repeat: none;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  position: relative; /* Pour permettre au contenu d'être positionné correctement */
+  text-align: center;
+  color: #fff;
 }
 
 header .intro-text {
@@ -332,9 +410,9 @@ header .intro-text .intro-heading {
   margin-bottom: 25px;
   text-transform: uppercase;
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 50px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 50px;
+  line-height: 22px;
 }
 
 @media (min-width: 768px) {
@@ -345,16 +423,16 @@ header .intro-text .intro-heading {
   header .intro-text .intro-lead-in {
     margin-bottom: 25px;
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 60px;
+    line-height: 60px;
   }
   header .intro-text .intro-heading {
     margin-bottom: 20px;
     text-transform: uppercase;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 50px;
     font-weight: 700;
-    line-height: 20px;
+    line-height: 50px;
   }
 }
 section {
