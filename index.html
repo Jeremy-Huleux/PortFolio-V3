@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PortFolio V3</title>
     <!-- Font Awesome CSS -->
-    <link
+    <!-- <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
-    />
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
+    <link rel="stylesheet" href="fichiers/font-awesome.min.css">
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
@@ -133,7 +134,7 @@
         <div class="snow"></div>
       </header>
 
-      <section id="apropos">
+      <section id="apropos" class="bg-light-gray">
         <div class="container">
           <div class="row">
             <div class="col-lg-12 text-center">
@@ -164,8 +165,93 @@
           </div>
         </div>
       </section>
+
       <!-- Services Section -->
-      <section id="skills">
+      <section id="skills" class="bg-light-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <h2 class="section-heading">Soft Skills</h2>
+              <h3 class="section-subheading text-muted">
+                Lorem ipsum dolor sit amet consectetur.
+              </h3>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-4">
+              <div class="chart-container">
+              <div
+                id="chart"
+                data-pie="piedata"
+                data-pie-label="Comment je me comporte"
+              ></div>
+            </div>
+            </div>
+            <div class="col-md-4">
+              <div class="chart-container">
+              <div
+                id="chart-2"
+                data-pie="piedata2"
+                data-pie-label="Ce que j'aime faire"
+              ></div>
+            </div>
+            </div>
+            <div class="col-md-4">
+              <div class="chart-container">
+              <div
+                id="chart-3"
+                data-pie="piedata3"
+                data-pie-label="Ce que je peux faire"
+              ></div>
+            </div>
+            </div>
+          </div>
+
+          
+            <div class="paddingtop row text-center">
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fa fa-handshake-o fa-stack-1x" ></i>
+                </span>
+                <h4 class="service-heading">Dans ma relation avec les autres</h4>
+                <p class="text-muted">
+                  Je fais preuve de spontanéité dans mon discours et je me montre franc.
+Je fais preuve d'humilité, sans chercher à m'imposer.
+Je ne me disperse pas dans mes relations et je garde une certaine retenue.
+                </p>
+              </div>
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fa fa-suitcase fa-stack-1x" ></i>
+                </span>
+                <h4 class="service-heading">Dans ma manière de travailler</h4>
+                <p class="text-muted">
+                  Je m'appuie sur des méthodes éprouvées, tout en étant ouvert à l'innovation lorsque c'est pertinent.
+Lorsque je rencontre des obstacles, je trouve des solutions efficacement, en sachant m'entourer et déléguer avec confiance.
+Je garde une approche structurée et me concentre sur mes responsabilités, tout en restant attentif aux opportunités d'amélioration.
+                </p>
+              </div>
+              <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                  <i class="fa fa-heart fa-stack-1x"></i>
+                </span>
+                <h4 class="service-heading">Dans ma gestion des émotions</h4>
+                <p class="text-muted">
+                  Je suis serein et je ne me laisse pas perturber par les événements extérieurs.
+Je maîtrise mes émotions et je ne les répercute pas sur les autres.
+Je fais preuve de discernement et je juge sur la base des faits.
+                </p>
+              </div>
+            </div>
+          
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <!-- <section id="skills">
         <div class="container">
           <div class="chart-container">
             <div class="row">
@@ -176,21 +262,49 @@
                   développement web.
                 </h3>
               </div>
-            </div>
-            <div class="row text-center">
+            </div> -->
+      <!-- <div class="row text-center">
+            <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+              <div
+                    id="chart-2"
+                    data-pie="piedata2"
+                    data-pie-label="Shoppers by Gender"
+                  ></div></span>
+            </div></div> -->
+
+      <!-- <div class="col-md-4">
+              <span class="fa-stack fa-4x">
+                <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+      <!-- <i class="glyphicon glyphicon-tint"></i>  -->
+      <!-- <div
+                  id="chart"
+                  data-pie="piedata"
+                  data-pie-label="Shoppers by Age"
+                ></div> -->
+      <!-- </span>
+              <h4 class="service-heading">Waterfall maybe?</h4>
+              <p class="text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Minima maxime quam architecto quo inventore harum ex magni,
+                dicta impedit.
+              </p>
+            </div>  -->
+
+      <!-- <div class="row text-center">
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                  <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
-                  <!-- <i class="glyphicon glyphicon-tree-conifer"></i> -->
-                  <!-- <div class="container"> -->
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+      <!-- <i class="glyphicon glyphicon-tree-conifer"></i> -->
+      <!-- <div class="container">
                   <div
                     id="chart-2"
                     data-pie="piedata2"
                     data-pie-label="Shoppers by Gender"
                   ></div>
 
-                  <!-- <div id="chart" data-pie="piedata" data-pie-label="Shoppers by Age"></div> -->
-                  <!-- </div> -->
+                  <div id="chart" data-pie="piedata" data-pie-label="Shoppers by Age"></div> -->
+      <!-- </div> 
                 </span>
                 <h4 class="service-heading">Here is a pokok</h4>
                 <p class="text-muted">
@@ -201,8 +315,8 @@
               </div>
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                  <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
-                  <!-- <i class="glyphicon glyphicon-heart"></i> -->
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+      <!-- <i class="glyphicon glyphicon-heart"></i> 
                   <div
                     id="chart"
                     data-pie="piedata"
@@ -218,8 +332,8 @@
               </div>
               <div class="col-md-4">
                 <span class="fa-stack fa-4x">
-                  <!-- <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
-                  <!-- <i class="glyphicon glyphicon-tint"></i> -->
+                  <i class="fa fa-circle fa-stack-2x text-primary"></i> -->
+      <!-- <i class="glyphicon glyphicon-tint"></i> 
                   <div
                     id="chart"
                     data-pie="piedata"
@@ -233,10 +347,10 @@
                   dicta impedit.
                 </p>
               </div>
-            </div>
-          </div>
+            </div> -->
+      <!-- </div>
         </div>
-      </section>
+      </section> -->
 
       <!-- Portfolio Grid Section -->
       <section id="portfolio" class="bg-light-gray">

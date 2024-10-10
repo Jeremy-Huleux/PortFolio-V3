@@ -504,38 +504,656 @@ $(".navbar-collapse ul li a").click(function () {
 
 var gradients = [
   {id: 'pink', start: '#b34f53', end: '#dd5b59'},
+  {id: 'pinkAssessFirst', start: '#FF2F92', end: '#FF73B2'},
   {id: 'blue', start: '#095a82', end: '#0170a7'},
+  {id: 'blueAssessFirst', start: '#0096FF', end: '#66B8FF'},
+  {id: 'blueClairAssessFirst', start: '#80CAFF', end: '#B3E0FF'},
   {id: 'red', start: '#874d2a', end: '#a55724'},
   {id: 'green', start: '#5b7964', end: '#869d8d'},
+  {id: 'greenAssessFirst', start: '#52A003', end: '#8ACC55'},
   {id: 'aqua', start: '#3f6071', end: '#588094'},
+  {id: 'yellowAssessFirst', start: '#F8BC4D', end: '#FFD68A'},
+  {id: 'orangeAssessFirst', start: '#F06F38', end: '#FFA573'},
+  {id: 'greyAssessFirst', start: '#CDD1D6', end: '#E4E6E9'},
   {id: 'other', start: '#2272ad', end: '#308cd0'}
 ];
 
 var data = [];
 
 data['piedata'] = [
-  { label: "18-24", value: 25, color: 'red' },
-  { label: "25-34", value: 22, color: 'blue' },
-  { label: "35-44", value: 31, color: 'pink' },
-  { label: "45-54", value: 14, color: 'green' },
-  { label: "55-64", value: 6, color: 'other' },
-  { label: "65+", value: 2, color: 'aqua' }
+  { label: "Rigueur", value: 25, color: 'blueAssessFirst' },
+  { label: "Empathie", value: 27, color: 'greenAssessFirst' },
+  { label: "Créativité", value: 24, color: 'yellowAssessFirst' },
+  { label: "Management", value: 24, color: 'pinkAssessFirst' }
 ];
 
 data['piedata2'] = [
-  { label: "Male", value: 54, color: 'blue' },
-  { label: "Female", value: 46, color: 'pink' }
+  { label: "Dynamisme", value: 45, color: 'greenAssessFirst' },
+  { label: "Stabilité", value: 55, color: 'blueAssessFirst' }
+];
+data['piedata3'] = [
+  { label: "Approfondir", value: 18, color: 'greyAssessFirst' },
+  { label: "Innover", value: 35, color: 'orangeAssessFirst' },
+  { label: "Experimenter", value: 33, color: 'blueAssessFirst' },
+  { label: "Appliquer", value: 15, color: 'blueClairAssessFirst' }
 ];
 
+// $(document).ready(function() {
+//   $('[data-pie]').each(function() {
+//     var chartId = '#' + $(this).attr('id');
+//     var chartLabel = $(this).attr('data-pie-label');
+//     var piedata = data[$(this).attr('data-pie')];
+    
+//     var width = 300,
+//     height = 300,
+//     radius = 140;
+
+//     var pie = d3.layout.pie()
+//       .value(function(d) {
+//         return d.value;
+//       })
+//       .sort(null);
+
+//     var arc = d3.svg.arc()
+//       .outerRadius(radius)
+//       .innerRadius(radius / 1.5);
+
+//     var max = d3.max(piedata, function(d) { return +d.value;} );
+
+//     var myChart = d3.select(chartId).append('svg')
+//       .attr('width', width)
+//       .attr('height', height)
+//       .append('g')
+//         .attr('transform', 'translate('+ (width / 2) +', '+ (height / 2) +')')
+//         .selectAll('path').data(pie(piedata))
+//         .enter().append('g')
+//           .attr('class', function(d, i) {
+//             var cssClass = 'slice';
+//             if (d.data.value === max) {
+//               cssClass += ' max';
+//             }
+//             return cssClass;
+//           });
+
+//     var gradient = d3.select(chartId + ' svg')
+//       .selectAll('linearGradient').data(gradients)
+//       .enter().append('linearGradient')
+//         .attr('id', function(d, i) {
+//           return gradients[i].id;
+//         });
+
+//     gradient.append('stop')
+//       .attr('offset', '0%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].start;
+//       });
+
+//     gradient.append('stop')
+//       .attr('offset', '100%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].end;
+//       });
+
+//     var slices = d3.selectAll(chartId + ' g.slice')
+//       .append('path')
+//         .attr('fill', function(d, i) {
+//           return 'url(#' + d.data.color + ')';
+//         })
+//         .attr('d', arc)
+//         .on('mouseover', function(d, i) {
+//           var gradient = gradients.filter(function( obj ) {
+//             return obj.id == d.data.color;
+//           });
+//           $(chartId + ' [data-slice]').css('opacity', 0.5);
+//           $(chartId + ' [data-slice=' + i + ']').css({
+//             'background': gradient[0].end,
+//             'opacity': 1
+//           });
+//         })
+//         .on('mouseout', function(d, i) {
+//           $(chartId + ' [data-slice]').css('opacity', 1);
+//           $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//         });
+
+//     var legend = d3.select(chartId)
+//       .attr('class', 'pie-chart')
+//       .append('ul')
+//         .attr('class', 'legend')
+//         .selectAll('li').data(pie(piedata))
+//         .enter().append('li')
+//           .attr('data-slice', function(d, i) {
+//             return i;
+//           })
+//           .attr('style', function(d, i) {
+//             var gradient = gradients.filter(function( obj ) {
+//               return obj.id == d.data.color;
+//             });
+//             return 'border-bottom: solid 3px ' + gradient[0].end;
+//           })
+//           .text(function(d, i) {
+//             return d.data.label + ': ';
+//           });
+
+//     legend.append('span')
+//       .text(function(d, i) {
+//       return d.data.value + '%';
+//     });
+
+//     var maxCirc = d3.select(chartId)
+//       .append('div')
+//       .attr('class', 'max-circ');
+
+//     maxCirc.append('span')
+//       .attr('class', 'label')
+//       .text(chartLabel);
+
+//     maxCirc.append('span')
+//       .attr('class', 'value')
+//       .attr('style', function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         var gradient = gradients.filter(function( obj ) {
+//           return obj.id == top[0].color;
+//         });
+//         return 'color: ' + gradient[0].end;
+//       })
+//       .text(function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         return top[0].label + ': ' + top[0].value + '%';
+//       });
+//   });
+// });
+
+// $(document).ready(function() {
+//   $('[data-pie]').each(function() {
+//     var chartId = '#' + $(this).attr('id');
+//     var chartLabel = $(this).attr('data-pie-label');
+//     var piedata = data[$(this).attr('data-pie')];
+    
+//     var width = 300,
+//     height = 300,
+//     radius = 140;
+
+//     var pie = d3.layout.pie()
+//       .value(function(d) {
+//         return d.value;
+//       })
+//       .sort(null);
+
+//     var arc = d3.svg.arc()
+//       .outerRadius(radius)
+//       .innerRadius(radius / 1.5);
+
+//     var max = d3.max(piedata, function(d) { return +d.value;} );
+
+//     var myChart = d3.select(chartId).append('svg')
+//       .attr('width', width)
+//       .attr('height', height)
+//       .append('g')
+//         .attr('transform', 'translate('+ (width / 2) +', '+ (height / 2) +')')
+//         .selectAll('path').data(pie(piedata))
+//         .enter().append('g')
+//           .attr('class', function(d, i) {
+//             var cssClass = 'slice';
+//             if (d.data.value === max) {
+//               cssClass += ' max';
+//             }
+//             return cssClass;
+//           });
+
+//     var gradient = d3.select(chartId + ' svg')
+//       .selectAll('linearGradient').data(gradients)
+//       .enter().append('linearGradient')
+//         .attr('id', function(d, i) {
+//           return gradients[i].id;
+//         });
+
+//     gradient.append('stop')
+//       .attr('offset', '0%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].start;
+//       });
+
+//     gradient.append('stop')
+//       .attr('offset', '100%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].end;
+//       });
+
+//     var slices = d3.selectAll(chartId + ' g.slice')
+//       .append('path')
+//         .attr('fill', function(d, i) {
+//           return 'url(#' + d.data.color + ')';
+//         })
+//         .attr('d', arc)
+//         .on('mouseover', function(d, i) {
+//           var gradient = gradients.filter(function( obj ) {
+//             return obj.id == d.data.color;
+//           });
+//           $(chartId + ' [data-slice]').css('opacity', 0.5);
+//           $(chartId + ' [data-slice=' + i + ']').css({
+//             'background': gradient[0].end,
+//             'opacity': 1
+//           });
+//         })
+//         .on('mouseout', function(d, i) {
+//           $(chartId + ' [data-slice]').css('opacity', 1);
+//           $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//         });
+
+//     var legend = d3.select(chartId)
+//       .attr('class', 'pie-chart')
+//       .append('ul')
+//         .attr('class', 'legend')
+//         .selectAll('li').data(pie(piedata))
+//         .enter().append('li')
+//           .attr('data-slice', function(d, i) {
+//             return i;
+//           })
+//           .attr('style', function(d, i) {
+//             var gradient = gradients.filter(function( obj ) {
+//               return obj.id == d.data.color;
+//             });
+//             return 'border-bottom: solid 3px ' + gradient[0].end;
+//           })
+//           .text(function(d, i) {
+//             return d.data.label + ': ';
+//           })
+//           .on('mouseover', function(d, i) {
+//             var gradient = gradients.filter(function( obj ) {
+//               return obj.id == d.data.color;
+//             });
+//             $(chartId + ' [data-slice]').css('opacity', 0.5);
+//             $(chartId + ' [data-slice=' + i + ']').css({
+//               'background': gradient[0].end,
+//               'opacity': 1
+//             });
+//           })
+//           .on('mouseout', function(d, i) {
+//             $(chartId + ' [data-slice]').css('opacity', 1);
+//             $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//           });
+
+//     legend.append('span')
+//       .text(function(d, i) {
+//       return d.data.value + '%';
+//     });
+
+//     var maxCirc = d3.select(chartId)
+//       .append('div')
+//       .attr('class', 'max-circ');
+
+//     maxCirc.append('span')
+//       .attr('class', 'label')
+//       .text(chartLabel);
+
+//     maxCirc.append('span')
+//       .attr('class', 'value')
+//       .attr('style', function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         var gradient = gradients.filter(function( obj ) {
+//           return obj.id == top[0].color;
+//         });
+//         return 'color: ' + gradient[0].end;
+//       })
+//       .text(function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         return top[0].label + ': ' + top[0].value + '%';
+//       });
+//   });
+// });
+
+// $(document).ready(function() {
+//   $('[data-pie]').each(function() {
+//     var chartId = '#' + $(this).attr('id');
+//     var chartLabel = $(this).attr('data-pie-label');
+//     var piedata = data[$(this).attr('data-pie')];
+    
+//     var width = 300,
+//     height = 300,
+//     radius = 140;
+
+//     var pie = d3.layout.pie()
+//       .value(function(d) {
+//         return d.value;
+//       })
+//       .sort(null);
+
+//     var arc = d3.svg.arc()
+//       .outerRadius(radius)
+//       .innerRadius(radius / 1.5);
+
+//     var max = d3.max(piedata, function(d) { return +d.value;} );
+
+//     var myChart = d3.select(chartId).append('svg')
+//       .attr('width', width)
+//       .attr('height', height)
+//       .append('g')
+//         .attr('transform', 'translate('+ (width / 2) +', '+ (height / 2) +')')
+//         .selectAll('path').data(pie(piedata))
+//         .enter().append('g')
+//           .attr('class', function(d, i) {
+//             var cssClass = 'slice';
+//             if (d.data.value === max) {
+//               cssClass += ' max';
+//             }
+//             return cssClass;
+//           });
+
+//     var gradient = d3.select(chartId + ' svg')
+//       .selectAll('linearGradient').data(gradients)
+//       .enter().append('linearGradient')
+//         .attr('id', function(d, i) {
+//           return gradients[i].id;
+//         });
+
+//     gradient.append('stop')
+//       .attr('offset', '0%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].start;
+//       });
+
+//     gradient.append('stop')
+//       .attr('offset', '100%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].end;
+//       });
+
+//     var slices = d3.selectAll(chartId + ' g.slice')
+//       .append('path')
+//         .attr('fill', function(d, i) {
+//           return 'url(#' + d.data.color + ')';
+//         })
+//         .attr('d', arc)
+//         .on('mouseover', function(d, i) {
+//           var gradient = gradients.filter(function( obj ) {
+//             return obj.id == d.data.color;
+//           });
+//           $(chartId + ' [data-slice]').css('opacity', 0.5);
+//           $(chartId + ' [data-slice=' + i + ']').css({
+//             'background': gradient[0].end,
+//             'opacity': 1
+//           });
+//           d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//             .transition()
+//             .duration(200)
+//             .attr('d', d3.svg.arc()
+//               .outerRadius(radius + 10)
+//               .innerRadius(radius / 1.5 + 10));
+//         })
+//         .on('mouseout', function(d, i) {
+//           $(chartId + ' [data-slice]').css('opacity', 1);
+//           $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//           d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//             .transition()
+//             .duration(200)
+//             .attr('d', d3.svg.arc()
+//               .outerRadius(radius)
+//               .innerRadius(radius / 1.5));
+//         });
+
+//     var legend = d3.select(chartId)
+//       .attr('class', 'pie-chart')
+//       .append('ul')
+//         .attr('class', 'legend')
+//         .selectAll('li').data(pie(piedata))
+//         .enter().append('li')
+//           .attr('data-slice', function(d, i) {
+//             return i;
+//           })
+//           .attr('style', function(d, i) {
+//             var gradient = gradients.filter(function( obj ) {
+//               return obj.id == d.data.color;
+//             });
+//             return 'border-bottom: solid 3px ' + gradient[0].end;
+//           })
+//           .text(function(d, i) {
+//             return d.data.label + ': ';
+//           })
+//           .on('mouseover', function(d, i) {
+//             var gradient = gradients.filter(function( obj ) {
+//               return obj.id == d.data.color;
+//             });
+//             $(chartId + ' [data-slice]').css('opacity', 0.5);
+//             $(chartId + ' [data-slice=' + i + ']').css({
+//               'background': gradient[0].end,
+//               'opacity': 1
+//             });
+//             d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//               .transition()
+//               .duration(200)
+//               .attr('d', d3.svg.arc()
+//                 .outerRadius(radius + 10)
+//                 .innerRadius(radius / 1.5 + 10));
+//           })
+//           .on('mouseout', function(d, i) {
+//             $(chartId + ' [data-slice]').css('opacity', 1);
+//             $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//             d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//               .transition()
+//               .duration(200)
+//               .attr('d', d3.svg.arc()
+//                 .outerRadius(radius)
+//                 .innerRadius(radius / 1.5));
+//           });
+
+//     legend.append('span')
+//       .text(function(d, i) {
+//       return d.data.value + '%';
+//     });
+
+//     var maxCirc = d3.select(chartId)
+//       .append('div')
+//       .attr('class', 'max-circ');
+
+//     maxCirc.append('span')
+//       .attr('class', 'label')
+//       .text(chartLabel);
+
+//     maxCirc.append('span')
+//       .attr('class', 'value')
+//       .attr('style', function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         var gradient = gradients.filter(function( obj ) {
+//           return obj.id == top[0].color;
+//         });
+//         return 'color: ' + gradient[0].end;
+//       })
+//       .text(function() {
+//         var top = piedata.filter(function( obj ) {
+//           return obj.value == max;
+//         });
+//         return top[0].label + ': ' + top[0].value + '%';
+//       });
+//   });
+// });
+
+// $(document).ready(function() {
+//   $('[data-pie]').each(function() {
+//     var chartId = '#' + $(this).attr('id');
+//     var chartLabel = $(this).attr('data-pie-label');
+//     var piedata = data[$(this).attr('data-pie')];
+
+//     var width = 300,
+//       height = 300,
+//       radius = 140;
+
+//     var pie = d3.layout.pie()
+//       .value(function(d) {
+//         return d.value;
+//       })
+//       .sort(null);
+
+//     var arc = d3.svg.arc()
+//       .outerRadius(radius)
+//       .innerRadius(radius / 1.5);
+
+//     var max = d3.max(piedata, function(d) { return +d.value; });
+
+//     var myChart = d3.select(chartId).append('svg')
+//       .attr('width', width)
+//       .attr('height', height)
+//       .append('g')
+//       .attr('transform', 'translate(' + (width / 2) + ', ' + (height / 2) + ')')
+//       .selectAll('path').data(pie(piedata))
+//       .enter().append('g')
+//       .attr('class', function(d, i) {
+//         var cssClass = 'slice';
+//         if (d.data.value === max) {
+//           cssClass += ' max';
+//         }
+//         return cssClass;
+//       });
+
+//     var gradient = d3.select(chartId + ' svg')
+//       .selectAll('linearGradient').data(gradients)
+//       .enter().append('linearGradient')
+//       .attr('id', function(d, i) {
+//         return gradients[i].id;
+//       });
+
+//     gradient.append('stop')
+//       .attr('offset', '0%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].start;
+//       });
+
+//     gradient.append('stop')
+//       .attr('offset', '100%')
+//       .attr('stop-color', function(d, i) {
+//         return gradients[i].end;
+//       });
+
+//     var slices = d3.selectAll(chartId + ' g.slice')
+//       .append('path')
+//       .attr('fill', function(d, i) {
+//         return 'url(#' + d.data.color + ')';
+//       })
+//       .attr('d', arc)
+//       .on('mouseover', function(d, i) {
+//         var gradient = gradients.filter(function(obj) {
+//           return obj.id == d.data.color;
+//         });
+//         $(chartId + ' [data-slice]').css('opacity', 0.5);
+//         $(chartId + ' [data-slice=' + i + ']').css({
+//           'background': gradient[0].end,
+//           'opacity': 1
+//         });
+//         d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//           .transition()
+//           .duration(200)
+//           .attr('d', d3.svg.arc()
+//             .outerRadius(radius + 10)
+//             .innerRadius(radius / 1.5 + 10));
+//       })
+//       .on('mouseout', function(d, i) {
+//         $(chartId + ' [data-slice]').css('opacity', 1);
+//         $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+//         d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//           .transition()
+//           .duration(200)
+//           .attr('d', arc); // Revenir à la forme originale
+//       });
+
+//     var legend = d3.select(chartId)
+//       .attr('class', 'pie-chart')
+//       .append('ul')
+//       .attr('class', 'legend')
+//       .selectAll('li').data(pie(piedata))
+//       .enter().append('li')
+//       .attr('data-slice', function(d, i) {
+//         return i;
+//       })
+//       .attr('style', function(d, i) {
+//         var gradient = gradients.filter(function(obj) {
+//           return obj.id == d.data.color;
+//         });
+//         return 'border-bottom: solid 3px ' + gradient[0].end;
+//       })
+//       .text(function(d, i) {
+//         return d.data.label + ': ';
+//       })
+//       .on('mouseover', function(d, i) {
+//         // Appliquer l'effet de survol du pie chart
+//         var gradient = gradients.filter(function(obj) {
+//           return obj.id == d.data.color;
+//         });
+//         $(chartId + ' [data-slice]').css('opacity', 0.5);
+//         $(chartId + ' [data-slice=' + i + ']').css({
+//           'background': gradient[0].end,
+//           'opacity': 1
+//         });
+        
+//         // Effet sur le pie chart
+//         d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//           .transition()
+//           .duration(200)
+//           .attr('d', d3.svg.arc()
+//             .outerRadius(radius + 10)
+//             .innerRadius(radius / 1.5 + 10));
+//       })
+//       .on('mouseout', function(d, i) {
+//         // Restaurer l'état initial pour les tranches du pie chart
+//         $(chartId + ' [data-slice]').css('opacity', 1);
+//         $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+        
+//         // Réinitialiser le pie chart
+//         d3.select(chartId + ' g.slice:nth-child(' + (i + 1) + ') path')
+//           .transition()
+//           .duration(200)
+//           .attr('d', arc); // Revenir à la forme originale
+//       });
+
+//     legend.append('span')
+//       .text(function(d, i) {
+//         return d.data.value + '%';
+//       });
+
+//     var maxCirc = d3.select(chartId)
+//       .append('div')
+//       .attr('class', 'max-circ');
+
+//     maxCirc.append('span')
+//       .attr('class', 'label')
+//       .text(chartLabel);
+
+//     maxCirc.append('span')
+//       .attr('class', 'value')
+//       .attr('style', function() {
+//         var top = piedata.filter(function(obj) {
+//           return obj.value == max;
+//         });
+//         var gradient = gradients.filter(function(obj) {
+//           return obj.id == top[0].color;
+//         });
+//         return 'color: ' + gradient[0].end;
+//       })
+//       .text(function() {
+//         var top = piedata.filter(function(obj) {
+//           return obj.value == max;
+//         });
+//         return top[0].label + ': ' + top[0].value + '%';
+//       });
+//   });
+// });
 $(document).ready(function() {
   $('[data-pie]').each(function() {
     var chartId = '#' + $(this).attr('id');
     var chartLabel = $(this).attr('data-pie-label');
     var piedata = data[$(this).attr('data-pie')];
-    
+
     var width = 300,
-    height = 300,
-    radius = 140;
+      height = 300,
+      radius = 140;
 
     var pie = d3.layout.pie()
       .value(function(d) {
@@ -547,29 +1165,29 @@ $(document).ready(function() {
       .outerRadius(radius)
       .innerRadius(radius / 1.5);
 
-    var max = d3.max(piedata, function(d) { return +d.value;} );
+    var max = d3.max(piedata, function(d) { return +d.value; });
 
     var myChart = d3.select(chartId).append('svg')
       .attr('width', width)
       .attr('height', height)
       .append('g')
-        .attr('transform', 'translate('+ (width / 2) +', '+ (height / 2) +')')
-        .selectAll('path').data(pie(piedata))
-        .enter().append('g')
-          .attr('class', function(d, i) {
-            var cssClass = 'slice';
-            if (d.data.value === max) {
-              cssClass += ' max';
-            }
-            return cssClass;
-          });
+      .attr('transform', 'translate(' + (width / 2) + ', ' + (height / 2) + ')')
+      .selectAll('path').data(pie(piedata))
+      .enter().append('g')
+      .attr('class', function(d, i) {
+        var cssClass = 'slice';
+        if (d.data.value === max) {
+          cssClass += ' max';
+        }
+        return cssClass;
+      });
 
     var gradient = d3.select(chartId + ' svg')
       .selectAll('linearGradient').data(gradients)
       .enter().append('linearGradient')
-        .attr('id', function(d, i) {
-          return gradients[i].id;
-        });
+      .attr('id', function(d, i) {
+        return gradients[i].id;
+      });
 
     gradient.append('stop')
       .attr('offset', '0%')
@@ -585,48 +1203,78 @@ $(document).ready(function() {
 
     var slices = d3.selectAll(chartId + ' g.slice')
       .append('path')
-        .attr('fill', function(d, i) {
-          return 'url(#' + d.data.color + ')';
-        })
-        .attr('d', arc)
-        .on('mouseover', function(d, i) {
-          var gradient = gradients.filter(function( obj ) {
-            return obj.id == d.data.color;
-          });
-          $(chartId + ' [data-slice]').css('opacity', 0.5);
-          $(chartId + ' [data-slice=' + i + ']').css({
-            'background': gradient[0].end,
-            'opacity': 1
-          });
-        })
-        .on('mouseout', function(d, i) {
-          $(chartId + ' [data-slice]').css('opacity', 1);
-          $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+      .attr('fill', function(d, i) {
+        return 'url(#' + d.data.color + ')';
+      })
+      .attr('d', arc)
+      .on('mouseover', function(d, i) {
+        var gradient = gradients.filter(function(obj) {
+          return obj.id == d.data.color;
         });
+
+        // Appliquer les effets visuels sur le pie chart
+        $(chartId + ' [data-slice]').css('opacity', 0.5);
+        $(chartId + ' [data-slice=' + i + ']').css({
+          'background': gradient[0].end,
+          'opacity': 1
+        });
+      })
+      .on('mouseout', function(d, i) {
+        $(chartId + ' [data-slice]').css('opacity', 1);
+        $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+      });
 
     var legend = d3.select(chartId)
       .attr('class', 'pie-chart')
       .append('ul')
-        .attr('class', 'legend')
-        .selectAll('li').data(pie(piedata))
-        .enter().append('li')
-          .attr('data-slice', function(d, i) {
-            return i;
-          })
-          .attr('style', function(d, i) {
-            var gradient = gradients.filter(function( obj ) {
-              return obj.id == d.data.color;
-            });
-            return 'border-bottom: solid 3px ' + gradient[0].end;
-          })
-          .text(function(d, i) {
-            return d.data.label + ': ';
-          });
+      .attr('class', 'legend')
+      .selectAll('li').data(pie(piedata))
+      .enter().append('li')
+      .attr('data-slice', function(d, i) {
+        return i;
+      })
+      .attr('style', function(d, i) {
+        var gradient = gradients.filter(function(obj) {
+          return obj.id == d.data.color;
+        });
+        return 'border-bottom: solid 3px ' + gradient[0].end;
+      })
+      .text(function(d, i) {
+        return d.data.label + ': ';
+      })
+      .on('mouseover', function(d, i) {
+        // Appliquer les mêmes effets de survol que pour le pie chart
+        var gradient = gradients.filter(function(obj) {
+          return obj.id == d.data.color;
+        });
+
+        // Changer l'opacité des tranches lors du survol de la légende
+        $(chartId + ' g.slice path').css('opacity', 0.5);
+        $(chartId + ' g.slice:nth-child(' + (i + 1) + ') path').css('opacity', 1);
+
+        // Ajouter la classe .max au slice correspondant
+        $(chartId + ' g.slice').removeClass('max'); // Retirer la classe .max de tous les slices
+        $(chartId + ' g.slice:nth-child(' + (i + 1) + ')').addClass('max'); // Ajouter la classe .max au slice survolé
+
+        $(chartId + ' [data-slice]').css('opacity', 0.5);
+        $(chartId + ' [data-slice=' + i + ']').css({
+          'background': gradient[0].end,
+          'opacity': 1
+        });
+      })
+      .on('mouseout', function(d, i) {
+        $(chartId + ' g.slice path').css('opacity', 1);
+        $(chartId + ' [data-slice]').css('opacity', 1);
+        $(chartId + ' [data-slice=' + i + ']').css('background', 'rgba(0,0,0,0.2)');
+
+        // Retirer la classe .max lorsque la souris quitte l'élément de la légende
+        $(chartId + ' g.slice').removeClass('max');
+      });
 
     legend.append('span')
       .text(function(d, i) {
-      return d.data.value + '%';
-    });
+        return d.data.value + '%';
+      });
 
     var maxCirc = d3.select(chartId)
       .append('div')
@@ -639,20 +1287,19 @@ $(document).ready(function() {
     maxCirc.append('span')
       .attr('class', 'value')
       .attr('style', function() {
-        var top = piedata.filter(function( obj ) {
+        var top = piedata.filter(function(obj) {
           return obj.value == max;
         });
-        var gradient = gradients.filter(function( obj ) {
+        var gradient = gradients.filter(function(obj) {
           return obj.id == top[0].color;
         });
         return 'color: ' + gradient[0].end;
       })
       .text(function() {
-        var top = piedata.filter(function( obj ) {
+        var top = piedata.filter(function(obj) {
           return obj.value == max;
         });
         return top[0].label + ': ' + top[0].value + '%';
       });
   });
 });
-

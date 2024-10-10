@@ -10,6 +10,10 @@
   opacity: 1;
 }
 
+.paddingtop {
+  padding-top: 100px;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;
@@ -191,6 +195,10 @@ h6 {
 
 .bg-darkest-gray {
   background-color: #222;
+}
+
+.bg-dark-gray {
+  background-color: #5e5d5d;
 }
 
 .btn-primary {
@@ -1037,14 +1045,12 @@ body {
   display: inline-block;
   position: relative;
   vertical-align: top;
-  margin-left: 40px;
 }
 
 .pie-chart {
   max-width: 300px;
   display: inline-block;
   position: relative;
-  vertical-align: top;
 }
 .pie-chart + .pie-chart {
   margin-left: 40px;
@@ -1089,11 +1095,14 @@ body {
   background: rgba(0, 0, 0, 0.2);
   color: #ddd;
   text-shadow: 0 1px rgba(0, 0, 0, 0.5);
-  transition: background 0.2s, opacity 0.2s;
+  transition: background 0.2s, opacity 0.2s, transform 0.2s; /* Ajout de la transition pour le zoom */
 }
 .pie-chart .legend li span {
   color: #fff;
   font-weight: 700;
+}
+.pie-chart .legend li:hover {
+  transform: scale(1.05); /* Effet de zoom sur l'élément de la légende */
 }
 .pie-chart .slice {
   cursor: pointer;
