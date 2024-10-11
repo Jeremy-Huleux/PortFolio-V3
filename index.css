@@ -1104,6 +1104,13 @@ body {
 .pie-chart .legend li:hover {
   transform: scale(1.05); /* Effet de zoom sur l'élément de la légende */
 }
+.pie-chart .hover-effect {
+  transform: scale(1.05);
+  filter: brightness(1.4) grayscale(0);
+}
+.pie-chart .hover-effect path {
+  opacity: 1;
+}
 .pie-chart .slice {
   cursor: pointer;
   filter: brightness(1) grayscale(0.15);
@@ -1122,6 +1129,25 @@ body {
 }
 .pie-chart .slice:hover path, .pie-chart .slice.max path {
   opacity: 1;
+}
+
+/*
+
+***************************************************
+TEST GSAP
+***************************************************
+
+*/
+.gs_reveal {
+  opacity: 0;
+  visibility: hidden;
+  will-change: transform, opacity;
+  margin-bottom: 30px; /* Ajoute un espacement entre les sections */
+}
+
+.feature-image {
+  max-width: 100%;
+  margin-top: 10px; /* Un petit espacement au-dessus de l'image */
 }
 
 /*# sourceMappingURL=index.css.map */
