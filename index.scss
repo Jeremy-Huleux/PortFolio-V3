@@ -1330,7 +1330,14 @@ body {
       }
     }
   }
+  .hover-effect {
+    transform: scale(1.05);
+    filter: brightness(1.4) grayscale(0);
 
+    path {
+      opacity: 1;
+    }
+  }
   .slice {
     cursor: pointer;
     filter: brightness(1) grayscale(0.15);
