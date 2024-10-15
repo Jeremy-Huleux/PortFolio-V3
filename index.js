@@ -589,12 +589,14 @@ $(document).ready(function () {
     $(document).ready(function () {
       // Ajouter un événement click pour rediriger vers un lien sur les slices
       $(chartId + " g.slice").on("click", function () {
-        window.location.href = sliceUrl; // Redirige vers l'URL des slices
+        //window.location.href = sliceUrl; // Redirige vers l'URL des slices
+        window.open(sliceUrl, '_blank'); // Ouvre l'URL dans un nouvel onglet
       });
 
       // Ajouter un événement click pour rediriger vers un lien sur la légende
       $(chartId + " .legend li").on("click", function () {
-        window.location.href = legendUrl; // Redirige vers l'URL de la légende
+        //window.location.href = legendUrl; // Redirige vers l'URL de la légende
+        window.open(sliceUrl, '_blank'); // Ouvre l'URL dans un nouvel onglet
       });
     });
     var gradient = d3
@@ -708,7 +710,7 @@ $(document).ready(function () {
         d3.select(chartId + " g.slice:nth-child(" + (i + 1) + ") path")
           .transition()
           .duration(200)
-          .attr("transform", "scale(1)"); //transform: scale(1.05);
+          .attr("transform", "scale(1)"); 
 
         // Supprimer l'opacité des tranches lors du survol de la légende
         $(chartId + " g.slice path").css("opacity", 1);
@@ -749,53 +751,5 @@ $(document).ready(function () {
         });
         return top[0].label + ": " + top[0].value + "%";
       });
-  });
-});
-
-
-/*
-  essaies effets GSAP
-*/
-function animateFrom(elem, direction) {
-  direction = direction || 1;
-  var x = 0,
-      y = direction * 100;
-  if(elem.classList.contains("gs_reveal_fromLeft")) {
-    x = -100;
-    y = 0;
-  } else if (elem.classList.contains("gs_reveal_fromRight")) {
-    x = 100;
-    y = 0;
-  }
-  elem.style.transform = "translate(" + x + "px, " + y + "px)";
-  elem.style.opacity = "0";
-  gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
-    duration: 1.25, 
-    x: 0,
-    y: 0, 
-    autoAlpha: 1, 
-    ease: "expo", 
-    overwrite: "auto"
-  });
-}
-
-function hide(elem) {
-  gsap.set(elem, {autoAlpha: 0});
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Appliquer l'animation aux sections de révélation
-  gsap.utils.toArray(".reveal-section").forEach(function(elem) {
-    hide(elem); // assure that the element is hidden when scrolled into view
-    
-    ScrollTrigger.create({
-      trigger: elem,
-      start: "top 75%", // Commencer l'animation lorsque la section entre dans la vue
-      onEnter: function() { animateFrom(elem) }, 
-      onEnterBack: function() { animateFrom(elem, -1) },
-      onLeave: function() { hide(elem) } // assure that the element is hidden when scrolled out of view
-    });
   });
 });
