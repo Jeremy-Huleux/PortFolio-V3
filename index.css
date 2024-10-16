@@ -601,7 +601,6 @@ section h3.section-subheading {
 
 #portfolio .portfolio-item .portfolio-caption p {
   margin: 0;
-  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-style: italic;
 }
@@ -1007,7 +1006,7 @@ ul.social-buttons li a:active {
 
 .portfolio-skills li {
   padding: 10px; /* Espace interne */
-  color: rgb(0, 0, 0); /* Couleur du texte */
+  color: #777; /* Couleur du texte */
   border-radius: 5px; /* Coins arrondis */
   margin-bottom: 10px; /* Espace entre les éléments */
   transition: background-color 0.3s; /* Animation au survol */

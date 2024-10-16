@@ -19,7 +19,6 @@ L'objectif de cette version du portfolio était de **maximiser les performances*
 
 Ce portfolio a été conçu avec une approche axée sur la performance. Grâce à l'utilisation de SCSS pour générer des styles optimisés et d'un JavaScript natif bien structuré, cette version V3 se distingue par :
 - **Des temps de réponse ultra-rapides**.
-- **Une mise en cache intelligente** pour des chargements instantanés après la première visite.
 - **Un rendu fluide** et un **DOM minimaliste**, réduisant les sollicitations sur le processeur et augmentant les performances globales.
 
 ## Hébergement
