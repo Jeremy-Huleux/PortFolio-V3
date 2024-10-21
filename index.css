@@ -52,7 +52,6 @@
 background
 
 */
-/* Le conteneur qui contient tout le background */
 /* Conteneur pour la neige */
 .snow {
   position: absolute;
@@ -128,11 +127,6 @@ background
 Structure SCSS
 
 */
-/*!
- * Start Bootstrap - Agency Bootstrap Theme (https://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
 body {
   overflow-x: hidden;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -1221,6 +1215,143 @@ body {
 }
 .pie-chart .slice:hover path, .pie-chart .slice.max path {
   opacity: 1;
+}
+
+/* Mode sombre */
+#darkmode-toggle {
+  cursor: pointer; /* Change le curseur en forme de main */
+  text-decoration: none; /* Supprime le soulignement par défaut */
+  color: #1EE2E7; /* Change la couleur du texte pour qu'elle soit visible */
+  transition: all 0.3s; /* Animation douce pour le changement de couleur */
+}
+
+#darkmode-toggle:hover {
+  color: #bb86fc; /* Change la couleur du texte pour qu'elle soit visible */
+}
+
+.darkmode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+.darkmode .text-muted {
+  color: #b0b0b0;
+}
+.darkmode .text-primary {
+  color: #bb86fc;
+}
+.darkmode a {
+  color: #bb86fc;
+}
+.darkmode a:hover,
+.darkmode a:focus,
+.darkmode a:active,
+.darkmode a.active {
+  color: #3700b3;
+}
+.darkmode h1,
+.darkmode h2,
+.darkmode h3,
+.darkmode h4,
+.darkmode h5,
+.darkmode h6 {
+  color: #e0e0e0;
+}
+.darkmode .bg-light-gray {
+  background-color: #333;
+}
+.darkmode .bg-darkest-gray {
+  background-color: #121212;
+}
+.darkmode .bg-dark-gray {
+  background-color: #1e1e1e;
+}
+.darkmode .btn-primary {
+  border-color: #bb86fc;
+  color: #fff;
+  background-color: #bb86fc;
+}
+.darkmode .btn-primary:hover,
+.darkmode .btn-primary:focus,
+.darkmode .btn-primary:active,
+.darkmode .btn-primary.active,
+.darkmode .open .dropdown-toggle.btn-primary {
+  border-color: #3700b3;
+  color: #fff;
+  background-color: #3700b3;
+}
+.darkmode .navbar-default {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+.darkmode .navbar-default .navbar-brand {
+  color: #bb86fc;
+}
+.darkmode .navbar-default .navbar-brand:hover,
+.darkmode .navbar-default .navbar-brand:focus,
+.darkmode .navbar-default .navbar-brand:active,
+.darkmode .navbar-default .navbar-brand.active {
+  color: #ffffff;
+}
+.darkmode .navbar-default .nav li a {
+  color: #e0e0e0;
+}
+.darkmode .navbar-default .nav li a:hover,
+.darkmode .navbar-default .nav li a:focus {
+  color: #bb86fc;
+}
+.darkmode .profile-photo {
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+.darkmode section#contact {
+  background-color: #1e1e1e;
+}
+.darkmode section#contact .section-heading {
+  color: #e0e0e0;
+}
+.darkmode section#contact .form-control:focus {
+  border-color: #bb86fc;
+}
+.darkmode section#contact .form-group input.form-control {
+  background-color: #333;
+}
+.darkmode section#contact .form-group textarea.form-control {
+  background-color: #333;
+}
+.darkmode footer {
+  background-color: #1e1e1e;
+}
+.darkmode footer span.copyright {
+  color: #e0e0e0;
+}
+.darkmode ul.social-buttons li a {
+  background-color: #8b8a8a;
+}
+.darkmode ul.social-buttons li a:hover,
+.darkmode ul.social-buttons li a:focus,
+.darkmode ul.social-buttons li a:active {
+  background-color: #bb86fc;
+}
+.darkmode .portfolio-modal .modal-content {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+.darkmode .portfolio-modal .close-modal .lr,
+.darkmode .portfolio-modal .close-modal .lr .rl {
+  background-color: #e0e0e0;
+}
+.darkmode .chart-container .pie-chart .max-circ {
+  background: #333;
+}
+.darkmode .chart-container .pie-chart .legend li {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}
+.darkmode .chart-container .pie-chart .legend li:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#portfolio .portfolio-item .portfolio-caption {
+  background-color: #505050;
 }
 
 /*# sourceMappingURL=index.css.map */

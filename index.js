@@ -726,3 +726,15 @@ $(document).ready(function () {
       });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.getElementById('darkmode-toggle');
+  toggleButton.addEventListener('click', function() {
+    document.body.classList.toggle('darkmode');
+    if (document.body.classList.contains('darkmode')) {
+      toggleButton.textContent = 'Désactiver le mode sombre';
+    } else {
+      toggleButton.textContent = 'Activer le mode sombre';
+    }
+  });
+});

@@ -73,15 +73,6 @@ background
 
 */
 
-/* Le conteneur qui contient tout le background */
-// header {
-//   position: relative;
-//   height: 100vh; /* Occupe toute la hauteur de la fenêtre */
-//   background: url("fichiers/testtt.png") no-repeat center center;
-//   background-size: cover;
-//   overflow: hidden; /* Pour que les flocons ne débordent pas du header */
-// }
-
 /* Conteneur pour la neige */
 .snow {
   position: absolute;
@@ -158,12 +149,6 @@ background
 Structure SCSS
 
 */
-
-/*!
- * Start Bootstrap - Agency Bootstrap Theme (https://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
 
 body {
   overflow-x: hidden;
@@ -1273,7 +1258,7 @@ body {
     margin: 20px 0 0;
     font-size: 17px;
     text-align: center;
-  
+
     li {
       margin: 5px 0; /* Marge ajustée pour espacer verticalement les éléments */
       padding: 8px 8px 5px;
@@ -1283,12 +1268,12 @@ body {
       color: #ddd;
       text-shadow: 0 1px rgba(0, 0, 0, 0.5);
       transition: background 0.2s, opacity 0.2s, transform 0.2s; /* Transition douce */
-  
+
       span {
         color: #fff;
         font-weight: 700;
       }
-  
+
       &:hover {
         transform: scale(1.05); /* Effet de zoom au survol */
       }
@@ -1326,4 +1311,173 @@ body {
       }
     }
   }
+}
+
+/* Mode sombre */
+
+#darkmode-toggle {
+  cursor: pointer; /* Change le curseur en forme de main */
+  text-decoration: none; /* Supprime le soulignement par défaut */
+  color: #1EE2E7; /* Change la couleur du texte pour qu'elle soit visible */
+  transition: all 0.3s; /* Animation douce pour le changement de couleur */
+}
+
+#darkmode-toggle:hover {
+  color: #bb86fc; /* Change la couleur du texte pour qu'elle soit visible */
+}
+
+.darkmode {
+  background-color: #121212;
+  color: #e0e0e0;
+
+  .text-muted {
+    color: #b0b0b0;
+  }
+
+  .text-primary {
+    color: #bb86fc;
+  }
+
+  a {
+    color: #bb86fc;
+  }
+
+  a:hover,
+  a:focus,
+  a:active,
+  a.active {
+    color: #3700b3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #e0e0e0;
+  }
+
+  .bg-light-gray {
+    background-color: #333;
+  }
+
+  .bg-darkest-gray {
+    background-color: #121212;
+  }
+
+  .bg-dark-gray {
+    background-color: #1e1e1e;
+  }
+
+  .btn-primary {
+    border-color: #bb86fc;
+    color: #fff;
+    background-color: #bb86fc;
+  }
+
+
+
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-primary:active,
+  .btn-primary.active,
+  .open .dropdown-toggle.btn-primary {
+    border-color: #3700b3;
+    color: #fff;
+    background-color: #3700b3;
+  }
+
+  .navbar-default {
+    background-color: #1e1e1e;
+    border-color: #333;
+  }
+
+  .navbar-default .navbar-brand {
+    color: #bb86fc;
+  }
+
+  .navbar-default .navbar-brand:hover,
+  .navbar-default .navbar-brand:focus,
+  .navbar-default .navbar-brand:active,
+  .navbar-default .navbar-brand.active {
+    color: #ffffff;
+  }
+
+  .navbar-default .nav li a {
+    color: #e0e0e0;
+  }
+
+  .navbar-default .nav li a:hover,
+  .navbar-default .nav li a:focus {
+    color: #bb86fc;
+  }
+
+
+  .profile-photo {
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  section#contact {
+    background-color: #1e1e1e;
+  }
+
+  section#contact .section-heading {
+    color: #e0e0e0;
+  }
+
+  section#contact .form-control:focus {
+    border-color: #bb86fc;
+  }
+  section#contact .form-group input.form-control {
+    background-color: #333;
+  }
+  
+  section#contact .form-group textarea.form-control {
+    background-color: #333;
+  }
+  
+  footer {
+    background-color: #1e1e1e;
+  }
+
+  footer span.copyright {
+    color: #e0e0e0;
+  }
+
+  ul.social-buttons li a {
+    background-color: #8b8a8a;
+  }
+
+  ul.social-buttons li a:hover,
+  ul.social-buttons li a:focus,
+  ul.social-buttons li a:active {
+    background-color: #bb86fc;
+  }
+
+  .portfolio-modal .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  .portfolio-modal .close-modal .lr,
+  .portfolio-modal .close-modal .lr .rl {
+    background-color: #e0e0e0;
+  }
+
+  .chart-container .pie-chart .max-circ {
+    background: #333;
+  }
+
+  .chart-container .pie-chart .legend li {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+  }
+
+  .chart-container .pie-chart .legend li:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+#portfolio .portfolio-item .portfolio-caption {
+  background-color: #505050;
 }
