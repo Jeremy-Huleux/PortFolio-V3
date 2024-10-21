@@ -905,7 +905,9 @@ section h3.section-subheading {
   margin-bottom: 0;
   text-transform: none;
 }
-
+.text-white {
+  color: white !important; /* Utilisation de !important pour forcer la couleur blanche */
+}
 .team-member p {
   margin-top: 0;
 }

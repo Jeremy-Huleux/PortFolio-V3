@@ -1,0 +1,51 @@
+/* styles.css */
+
+/* Style global */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9; /* Fond clair */
+  color: #333; /* Texte sombre */
+}
+
+/* En-tête */
+header {
+  background: #007bff; /* Bleu */
+  color: white; /* Texte blanc pour contraste */
+  padding: 20px;
+  text-align: center;
+}
+
+/* Titres */
+h1, h2 {
+  color: #333; /* Couleur sombre pour les titres */
+}
+
+/* Sections */
+section {
+  margin-bottom: 20px;
+  background: white; /* Fond blanc pour les sections */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lien */
+a {
+  color: #007bff; /* Couleur des liens */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Souligner au survol */
+}
+
+/* Pied de page */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #666; /* Couleur grise pour le pied de page */
+}

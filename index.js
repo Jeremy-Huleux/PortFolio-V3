@@ -393,10 +393,18 @@ $("document").ready(function () {
   handleTyping();
 });
 
-// LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar"
+// LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar" ou ferme la modal
 function handleEscKey() {
   $(document).on("keyup", function (e) {
     if (e.keyCode === 27) {
+      // Vérifie si la modal est ouverte
+      if ($(".modal:visible").length) {
+        // Ferme la modal
+        $(".modal").modal("hide"); // Assure-toi que tu utilises le bon sélecteur pour ta modal
+        return; // Sort de la fonction
+      }
+
+      // Si aucune modal n'est ouverte, retourne au sidebar
       $("html, body").animate(
         {
           scrollTop: 0,
@@ -410,6 +418,7 @@ function handleEscKey() {
     }
   });
 }
+
 
 // TYPED : remplacement après le backspace
 function handleTyping() {
