@@ -754,6 +754,9 @@ section h3.section-subheading {
   text-align: center;
   color: #fff;
   background-color: #1ee2e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeline > li .timeline-image h4 {
@@ -909,9 +912,10 @@ section h3.section-subheading {
 
 section#contact {
   background-color: #222;
-  background-image: url(https://unsplash.imgix.net/44/C3EWdWzT8imxs0fKeKoC_blackforrest.JPG?q=75&fm=jpg&auto=format&s=986aaa92169d4e97975fa66ebd60bafd);
+  background-image: url(fichiers/images/contact.jpg);
   background-position: center;
   background-repeat: no-repeat;
+  //background-size: contain; /* Adjust the background size to fit the container */
 }
 
 section#contact .section-heading {
