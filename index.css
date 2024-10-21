@@ -1221,7 +1221,7 @@ body {
 #darkmode-toggle {
   cursor: pointer; /* Change le curseur en forme de main */
   text-decoration: none; /* Supprime le soulignement par défaut */
-  color: #1EE2E7; /* Change la couleur du texte pour qu'elle soit visible */
+  color: #1ee2e7; /* Change la couleur du texte pour qu'elle soit visible */
   transition: all 0.3s; /* Animation douce pour le changement de couleur */
 }
 
@@ -1338,16 +1338,6 @@ body {
 .darkmode .portfolio-modal .close-modal .lr,
 .darkmode .portfolio-modal .close-modal .lr .rl {
   background-color: #e0e0e0;
-}
-.darkmode .chart-container .pie-chart .max-circ {
-  background: #333;
-}
-.darkmode .chart-container .pie-chart .legend li {
-  background: rgba(255, 255, 255, 0.1);
-  color: #e0e0e0;
-}
-.darkmode .chart-container .pie-chart .legend li:hover {
-  background: rgba(255, 255, 255, 0.2);
 }
 
 #portfolio .portfolio-item .portfolio-caption {
