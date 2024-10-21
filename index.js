@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const snowContainer = document.querySelector(".snow");
-  const numberOfFlakes = 50; // Nombre de flocons de neige que tu veux
+  const numberOfFlakes = 50; // Nombre de flocons de neige que vous voulez
 
   for (let i = 0; i < numberOfFlakes; i++) {
     const snowflake = document.createElement("div");
@@ -27,71 +27,69 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   var Typed = function (el, options) {
-    // chosen element to manipulate text
+    // Élément choisi pour manipuler le texte
     this.el = $(el);
 
-    // options
+    // Options
     this.options = $.extend({}, $.fn.typed.defaults, options);
 
-    // attribute to type into
+    // Attribut à taper
     this.isInput = this.el.is("input");
     this.attr = this.options.attr;
 
-    // show cursor
+    // Afficher le curseur
     this.showCursor = this.isInput ? false : this.options.showCursor;
 
-    // text content of element
+    // Contenu textuel de l'élément
     this.elContent = this.attr ? this.el.attr(this.attr) : this.el.text();
 
-    // html or plain text
+    // HTML ou texte brut
     this.contentType = this.options.contentType;
 
-    // typing speed
+    // Vitesse de frappe
     this.typeSpeed = this.options.typeSpeed;
 
-    // add a delay before typing starts
+    // Ajouter un délai avant de commencer à taper
     this.startDelay = this.options.startDelay;
 
-    // backspacing speed
+    // Vitesse de suppression
     this.backSpeed = this.options.backSpeed;
 
-    // amount of time to wait before backspacing
+    // Temps d'attente avant de supprimer
     this.backDelay = this.options.backDelay;
 
-    // div containing strings
+    // Div contenant les chaînes de caractères
     this.stringsElement = this.options.stringsElement;
 
-    // input strings of text
+    // Chaînes de texte à taper
     this.strings = this.options.strings;
 
-    // character number position of current string
+    // Position du caractère actuel dans la chaîne
     this.strPos = 0;
 
-    // current array position
+    // Position actuelle dans le tableau
     this.arrayPos = 0;
 
-    // number to stop backspacing on.
-    // default 0, can change depending on how many chars
-    // you want to remove at the time
+    // Nombre de caractères à arrêter de supprimer
     this.stopNum = 0;
 
-    // Looping logic
+    // Logique de boucle
     this.loop = this.options.loop;
     this.loopCount = this.options.loopCount;
     this.curLoop = 0;
 
-    // for stopping
+    // Pour arrêter
     this.stop = false;
 
-    // custom cursor
+    // Curseur personnalisé
     this.cursorChar = this.options.cursorChar;
 
-    // shuffle the strings
+    // Mélanger les chaînes
     this.shuffle = this.options.shuffle;
-    // the order of strings
+    // L'ordre des chaînes
     this.sequence = [];
 
-    // All systems go!
+    // Tout est prêt !
     this.build();
   };
 
@@ -99,23 +97,23 @@ document.addEventListener("DOMContentLoaded", function () {
     constructor: Typed,
 
     init: function () {
-      // begin the loop w/ first current string (global self.strings)
-      // current string will be passed as an argument each time after this
+      // Commencer la boucle avec la première chaîne actuelle (self.strings global)
+      // La chaîne actuelle sera passée en argument à chaque fois après cela
       var self = this;
       self.timeout = setTimeout(function () {
         for (var i = 0; i < self.strings.length; ++i) self.sequence[i] = i;
 
-        // shuffle the array if true
+        // Mélanger le tableau si vrai
         if (self.shuffle) self.sequence = self.shuffleArray(self.sequence);
 
-        // Start typing
+        // Commencer à taper
         self.typewrite(self.strings[self.sequence[self.arrayPos]], self.strPos);
       }, self.startDelay);
     },
 
     build: function () {
       var self = this;
-      // Insert cursor
+      // Insérer le curseur
       if (this.showCursor === true) {
         this.cursor = $(
           '<span class="typed-cursor">' + this.cursorChar + "</span>"
@@ -133,49 +131,41 @@ document.addEventListener("DOMContentLoaded", function () {
       this.init();
     },
 
-    // pass current string state to each function, types 1 char per call
+    // Passer l'état actuel de la chaîne à chaque fonction, taper 1 caractère par appel
     typewrite: function (curString, curStrPos) {
-      // exit when stopped
+      // Sortir quand arrêté
       if (this.stop === true) {
         return;
       }
 
-      // varying values for setTimeout during typing
-      // can't be global since number changes each time loop is executed
+      // Valeurs variables pour setTimeout pendant la frappe
+      // Ne peut pas être global car le nombre change à chaque exécution de la boucle
       var humanize = Math.round(Math.random() * (100 - 30)) + this.typeSpeed;
       var self = this;
 
-      // ------------- optional ------------- //
-      // backpaces a certain string faster
-      // ------------------------------------ //
-      // if (self.arrayPos == 1){
-      //  self.backDelay = 50;
-      // }
-      // else{ self.backDelay = 500; }
-
-      // contain typing function in a timeout humanize'd delay
+      // Contenir la fonction de frappe dans un délai humanisé
       self.timeout = setTimeout(function () {
-        // check for an escape character before a pause value
-        // format: \^\d+ .. eg: ^1000 .. should be able to print the ^ too using ^^
-        // single ^ are removed from string
+        // Vérifier un caractère d'échappement avant une valeur de pause
+        // Format: \^\d+ .. ex: ^1000 .. devrait pouvoir imprimer le ^ aussi en utilisant ^^
+        // Les ^ simples sont supprimés de la chaîne
         var charPause = 0;
         var substr = curString.substr(curStrPos);
         if (substr.charAt(0) === "^") {
-          var skip = 1; // skip atleast 1
+          var skip = 1; // Sauter au moins 1
           if (/^\^\d+/.test(substr)) {
             substr = /\d+/.exec(substr)[0];
             skip += substr.length;
             charPause = parseInt(substr);
           }
 
-          // strip out the escape character and pause value so they're not printed
+          // Supprimer le caractère d'échappement et la valeur de pause pour qu'ils ne soient pas imprimés
           curString =
             curString.substring(0, curStrPos) +
             curString.substring(curStrPos + skip);
         }
 
         if (self.contentType === "html") {
-          // skip over html tags while typing
+          // Sauter les balises HTML pendant la frappe
           var curChar = curString.substr(curStrPos).charAt(0);
           if (curChar === "<" || curChar === "&") {
             var tag = "";
@@ -194,20 +184,20 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        // timeout for any pause after a character
+        // Délai pour toute pause après un caractère
         self.timeout = setTimeout(function () {
           if (curStrPos === curString.length) {
-            // fires callback function
+            // Déclenche la fonction de rappel
             self.options.onStringTyped(self.arrayPos);
 
-            // is this the final string
+            // Est-ce la dernière chaîne
             if (self.arrayPos === self.strings.length - 1) {
-              // animation that occurs on the last typed string
+              // Animation qui se produit sur la dernière chaîne tapée
               self.options.callback();
 
               self.curLoop++;
 
-              // quit if we wont loop back
+              // Quitter si nous ne revenons pas en boucle
               if (self.loop === false || self.curLoop === self.loopCount)
                 return;
             }
@@ -216,11 +206,11 @@ document.addEventListener("DOMContentLoaded", function () {
               self.backspace(curString, curStrPos);
             }, self.backDelay);
           } else {
-            /* call before functions if applicable */
+            /* Appeler les fonctions avant si applicable */
             if (curStrPos === 0) self.options.preStringTyped(self.arrayPos);
 
-            // start typing each new char into existing string
-            // curString: arg, self.el.html: original text inside element
+            // Commencer à taper chaque nouveau caractère dans la chaîne existante
+            // curString: arg, self.el.html: texte original à l'intérieur de l'élément
             var nextString = curString.substr(0, curStrPos + 1);
             if (self.attr) {
               self.el.attr(self.attr, nextString);
@@ -234,45 +224,32 @@ document.addEventListener("DOMContentLoaded", function () {
               }
             }
 
-            // add characters one by one
+            // Ajouter les caractères un par un
             curStrPos++;
-            // loop the function
+            // Boucler la fonction
             self.typewrite(curString, curStrPos);
           }
-          // end of character pause
+          // Fin de la pause de caractère
         }, charPause);
 
-        // humanized value for typing
+        // Valeur humanisée pour la frappe
       }, humanize);
     },
 
     backspace: function (curString, curStrPos) {
-      // exit when stopped
+      // Sortir quand arrêté
       if (this.stop === true) {
         return;
       }
 
-      // varying values for setTimeout during typing
-      // can't be global since number changes each time loop is executed
+      // Valeurs variables pour setTimeout pendant la frappe
+      // Ne peut pas être global car le nombre change à chaque exécution de la boucle
       var humanize = Math.round(Math.random() * (100 - 30)) + this.backSpeed;
       var self = this;
 
       self.timeout = setTimeout(function () {
-        // ----- this part is optional ----- //
-        // check string array position
-        // on the first string, only delete one word
-        // the stopNum actually represents the amount of chars to
-        // keep in the current string. In my case it's 14.
-        // if (self.arrayPos == 1){
-        //  self.stopNum = 14;
-        // }
-        //every other time, delete the whole typed string
-        // else{
-        //  self.stopNum = 0;
-        // }
-
         if (self.contentType === "html") {
-          // skip over html tags while backspacing
+          // Sauter les balises HTML pendant la suppression
           if (curString.substr(curStrPos).charAt(0) === ">") {
             var tag = "";
             while (curString.substr(curStrPos).charAt(0) !== "<") {
@@ -284,8 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        // ----- continue important stuff ----- //
-        // replace text with base text + typed characters
+        // Remplacer le texte par le texte de base + les caractères tapés
         var nextString = curString.substr(0, curStrPos);
         if (self.attr) {
           self.el.attr(self.attr, nextString);
@@ -299,23 +275,23 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        // if the number (id of character in current string) is
-        // less than the stop number, keep going
+        // Si le nombre (id du caractère dans la chaîne actuelle) est
+        // inférieur au nombre d'arrêt, continuer
         if (curStrPos > self.stopNum) {
-          // subtract characters one by one
+          // Soustraire les caractères un par un
           curStrPos--;
-          // loop the function
+          // Boucler la fonction
           self.backspace(curString, curStrPos);
         }
-        // if the stop number has been reached, increase
-        // array position to next string
+        // Si le nombre d'arrêt a été atteint, augmenter
+        // la position du tableau à la chaîne suivante
         else if (curStrPos <= self.stopNum) {
           self.arrayPos++;
 
           if (self.arrayPos === self.strings.length) {
             self.arrayPos = 0;
 
-            // Shuffle sequence again
+            // Mélanger à nouveau la séquence
             if (self.shuffle) self.sequence = self.shuffleArray(self.sequence);
 
             self.init();
@@ -326,11 +302,11 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         }
 
-        // humanized value for typing
+        // Valeur humanisée pour la frappe
       }, humanize);
     },
     /**
-     * Shuffles the numbers in the given array.
+     * Mélange les nombres dans le tableau donné.
      * @param {Array} array
      * @returns {Array}
      */
@@ -347,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       return array;
     },
-    // Reset and rebuild the element
+    // Réinitialiser et reconstruire l'élément
     reset: function () {
       var self = this;
       clearInterval(self.timeout);
@@ -357,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (typeof this.cursor !== "undefined") {
         this.cursor.remove();
       }
-      // Send the callback
+      // Envoyer le rappel
       self.options.resetCallback();
     },
   };
@@ -371,7 +347,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (typeof option == "string") data[option]();
     });
   };
-
   $.fn.typed.defaults = {
     strings: [
       "These are the default values...",
@@ -380,35 +355,35 @@ document.addEventListener("DOMContentLoaded", function () {
       "Have a great day!",
     ],
     stringsElement: null,
-    // typing speed
+    // vitesse de frappe
     typeSpeed: 0,
-    // time before typing starts
+    // délai avant de commencer à taper
     startDelay: 0,
-    // backspacing speed
+    // vitesse de suppression
     backSpeed: 0,
-    // shuffle the strings
+    // mélanger les chaînes
     shuffle: false,
-    // time before backspacing
+    // délai avant de supprimer
     backDelay: 500,
-    // loop
+    // boucle
     loop: false,
-    // false = infinite
+    // false = infini
     loopCount: false,
-    // show cursor
+    // afficher le curseur
     showCursor: true,
-    // character for cursor
+    // caractère pour le curseur
     cursorChar: "|",
-    // attribute to type (null == text)
+    // attribut à taper (null == texte)
     attr: null,
-    // either html or text
+    // soit html soit texte
     contentType: "html",
-    // call when done callback function
+    // fonction de rappel quand terminé
     callback: function () {},
-    // starting callback function before each string
+    // fonction de rappel avant chaque chaîne
     preStringTyped: function () {},
-    //callback for every typed string
+    // fonction de rappel pour chaque chaîne tapée
     onStringTyped: function () {},
-    // callback for reset
+    // fonction de rappel pour réinitialiser
     resetCallback: function () {},
   };
 })(window.jQuery);
@@ -418,14 +393,13 @@ $("document").ready(function () {
   handleTyping();
 });
 
-// LORSQU'ON APPUIS SUR ECHAP on retourne au "sidebar"
+// LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar"
 function handleEscKey() {
   $(document).on("keyup", function (e) {
     if (e.keyCode === 27) {
-      var href = $(this).attr("href");
       $("html, body").animate(
         {
-          scrollTop: $(href).offset().top,
+          scrollTop: 0,
         },
         600
       );
@@ -436,6 +410,7 @@ function handleEscKey() {
     }
   });
 }
+
 // TYPED : remplacement après le backspace
 function handleTyping() {
   $(".element").typed({
@@ -465,7 +440,7 @@ function handleTyping() {
 
 /*
 
-new js
+nouveau js
 
 */
 
@@ -485,18 +460,17 @@ $(function () {
   });
 });
 
-// Highlight the top nav as scrolling occurs
+// Mettre en surbrillance le menu supérieur lors du défilement
 $("body").scrollspy({
   target: ".navbar-fixed-top",
 });
 
-// Closes the Responsive Menu on Menu Item Click
+// Fermer le menu réactif lors du clic sur un élément de menu
 $(".navbar-collapse ul li a").click(function () {
   $(".navbar-toggle:visible").click();
 });
-
 /*
-  pie chart
+  graphique en secteurs
 */
 
 var gradients = [
@@ -522,7 +496,7 @@ var data = [];
 data["piedata"] = [
   { label: "Rigueur", value: 25, color: "blueAssessFirst" },
   { label: "Empathie", value: 27, color: "greenAssessFirst" },
-  { label: "Créativité", value: 24, color: "yellowAssessFirst" },
+  { label: "Créativité", value: 24, color: "red" },
   { label: "Management", value: 24, color: "pinkAssessFirst" },
 ];
 
@@ -531,7 +505,7 @@ data["piedata2"] = [
   { label: "Stabilité", value: 55, color: "blueAssessFirst" },
 ];
 data["piedata3"] = [
-  { label: "Approfondir", value: 18, color: "brown" },
+  { label: "Approfondir", value: 18, color: "other" },
   { label: "Innover", value: 35, color: "orangeAssessFirst" },
   { label: "Experimenter", value: 33, color: "blueAssessFirst" },
   { label: "Appliquer", value: 15, color: "purple" },
@@ -581,24 +555,25 @@ $(document).ready(function () {
         }
         return cssClass;
       });
+
     // Définir les URLs
     var sliceUrl =
-      "https://my.assessfirst.com/public/profile/rygldn4t-jeremy-huleux?lang=fr-FR"; // URL pour les slices
+      "https://my.assessfirst.com/public/profile/rygldn4t-jeremy-huleux?lang=fr-FR"; // URL pour les tranches
     var legendUrl =
       "https://my.assessfirst.com/public/profile/rygldn4t-jeremy-huleux?lang=fr-FR"; // URL pour la légende
+
     $(document).ready(function () {
-      // Ajouter un événement click pour rediriger vers un lien sur les slices
+      // Ajouter un événement click pour rediriger vers un lien sur les tranches
       $(chartId + " g.slice").on("click", function () {
-        //window.location.href = sliceUrl; // Redirige vers l'URL des slices
-        window.open(sliceUrl, '_blank'); // Ouvre l'URL dans un nouvel onglet
+        window.open(sliceUrl, "_blank"); // Ouvre l'URL dans un nouvel onglet
       });
 
       // Ajouter un événement click pour rediriger vers un lien sur la légende
       $(chartId + " .legend li").on("click", function () {
-        //window.location.href = legendUrl; // Redirige vers l'URL de la légende
-        window.open(sliceUrl, '_blank'); // Ouvre l'URL dans un nouvel onglet
+        window.open(sliceUrl, "_blank"); // Ouvre l'URL dans un nouvel onglet
       });
     });
+
     var gradient = d3
       .select(chartId + " svg")
       .selectAll("linearGradient")
@@ -646,7 +621,7 @@ $(document).ready(function () {
         $(chartId + " [data-slice]").css("opacity", 1);
         $(chartId + " [data-slice=" + i + "]").css(
           "background",
-          "rgba(0,0,0,0.2)"
+          "rgba(0,0,0,0.5)"
         );
       });
 
@@ -707,24 +682,13 @@ $(document).ready(function () {
         );
       })
       .on("mouseout", function (d, i) {
-        d3.select(chartId + " g.slice:nth-child(" + (i + 1) + ") path")
-          .transition()
-          .duration(200)
-          .attr("transform", "scale(1)"); 
-
-        // Supprimer l'opacité des tranches lors du survol de la légende
-        $(chartId + " g.slice path").css("opacity", 1);
-        $(chartId + " g.slice:nth-child(" + (i + 1) + ") path").css(
-          "opacity",
-          1
-        );
-        // Changer la couleur de fond des tranches lors du survol de la légende
         $(chartId + " [data-slice]").css("opacity", 1);
-        $(chartId + " [data-slice=" + i + "]").css({
-          background: gradient[0].end,
-          opacity: 1,
-        });
+        $(chartId + " [data-slice=" + i + "]").css(
+          "background",
+          "rgba(0,0,0,0.5)"
+        );
       });
+
     legend.append("span").text(function (d, i) {
       return d.data.value + "%";
     });

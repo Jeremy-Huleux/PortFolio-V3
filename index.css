@@ -52,7 +52,7 @@
 background
 
 */
-/* Le container qui contient tout le background */
+/* Le conteneur qui contient tout le background */
 /* Conteneur pour la neige */
 .snow {
   position: absolute;
@@ -1169,25 +1169,25 @@ body {
 }
 .pie-chart .legend {
   margin: 20px 0 0;
-  font-size: 12px;
+  font-size: 17px;
   text-align: center;
 }
 .pie-chart .legend li {
-  margin: 0 5px 10px;
+  margin: 5px 0; /* Marge ajustée pour espacer verticalement les éléments */
   padding: 8px 8px 5px;
   border-radius: 1px;
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.2);
+  display: block; /* Change inline-block en block pour un affichage vertical */
+  background: rgba(0, 0, 0, 0.5);
   color: #ddd;
   text-shadow: 0 1px rgba(0, 0, 0, 0.5);
-  transition: background 0.2s, opacity 0.2s, transform 0.2s; /* Ajout de la transition pour le zoom */
+  transition: background 0.2s, opacity 0.2s, transform 0.2s; /* Transition douce */
 }
 .pie-chart .legend li span {
   color: #fff;
   font-weight: 700;
 }
 .pie-chart .legend li:hover {
-  transform: scale(1.05); /* Effet de zoom sur l'élément de la légende */
+  transform: scale(1.05); /* Effet de zoom au survol */
 }
 .pie-chart .hover-effect {
   transform: scale(1.05);
