@@ -1064,6 +1064,9 @@ ul.social-buttons li a:active {
 }
 
 .tech-logo {
+  filter: drop-shadow(
+    0 0 40px rgba(255, 255, 255, 0.7)
+  ); /* Ombre blanche suivant le contour de l'image */
   width: 100px; /* Largeur fixe pour les logos */
   height: auto; /* Garde le ratio d'aspect des logos */
   margin: 10px; /* Espace autour de chaque logo */
@@ -1462,7 +1465,270 @@ body {
     background-color: #e0e0e0;
   }
 
+  #portfolio .portfolio-item .portfolio-caption {
+    background-color: #505050;
+  }
+  hr {
+    border: none; /* Supprime la bordure par défaut */
+    height: 0.5px; /* Hauteur de la ligne */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0) 100%
+    ); /* Dégradé */
+    margin: 20px 0; /* Marge au-dessus et en dessous de la ligne */
+  }
+  .profile-container .circle-spin {
+    border-top: 0.2rem solid #121212; // a changer en darkmode
+    border-bottom: 0.2rem solid #121212; // a changer pour le darkmode
+    border-right: 0.2rem solid #bb86fc;
+    border-left: 0.2rem solid #bb86fc;
+  }
+  .profile-container img {
+    border: 0.2rem solid #bb86fc;
+  }
 }
-#portfolio .portfolio-item .portfolio-caption {
-  background-color: #505050;
+
+/*
+
+SECTION CV
+
+*/
+
+.CV {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 6rem;
+}
+
+.profile-container {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container img {
+  width: 90%; 
+  border-radius: 50%;
+  border: 0.2rem solid #17d0d5;
+}
+
+.profile-container .circle-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-top: 0.2rem solid #fff; 
+  border-bottom: 0.2rem solid #fff; 
+  border-right: 0.2rem solid #17d0d5;
+  border-left: 0.2rem solid #17d0d5;
+  animation: aboutSpinner 4s infinite;
+}
+
+@keyframes aboutSpinner {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  10% {
+    transform: translate(-50%, -50%) rotate(30deg);
+  }
+  20% {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  51% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  53% {
+    transform: translate(-50%, -50%) rotate(345deg);
+  }
+  58% {
+    transform: translate(-50%, -50%) rotate(335deg);
+  }
+  70% {
+    transform: translate(-50%, -50%) rotate(315deg);
+  }
+  90% {
+    transform: translate(-50%, -50%) rotate(25deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+
+/*
+
+bouton download
+
+*/
+$color: #0077FF;
+
+
+
+.btn-circle-download {
+  position: relative;
+  height: 48px;
+  width: 48px;
+  margin: auto;
+  border-radius: 100%;
+  background: #E8EAED;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all .2s ease;
+
+  &:after {
+    content: "";
+    position: relative;
+    display: block;
+    width: 200%;
+    height: 100%;
+    background-image: linear-gradient(100deg, rgba(white, 0), rgba(white, .25), rgba(white, 0));
+    transform: translateX(-100%);
+  }
+
+  svg {
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+
+    &#border {
+      position: absolute;
+      top: 0;
+      left: 0;
+      stroke: none;
+      stroke-dasharray: 144;
+      stroke-dashoffset: 144;
+      transition: all .9s linear;
+    }
+
+    &#arrow {
+      position: absolute;
+      top: 14px;
+      left: 17px;
+      stroke: #9098A9;
+      transition: all .2s ease;
+    }
+
+    &#check {
+      position: absolute;
+      top: 17px;
+      left: 13px;
+      stroke: white;
+      transform: scale(0);
+    }
+  }
+
+  &:hover {
+    background: rgba($color, .2);
+
+    #arrow {
+      path,
+      polyline {
+        stroke: $color;
+      }
+    }
+  }
+
+  &.load {
+    background: rgba($color, .2);
+
+    #arrow {
+      path,
+      polyline {
+        stroke: $color;
+      }
+    }
+
+    #border {
+      stroke: $color;
+      stroke-dasharray: 144;
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &.done {
+    background: $color;
+    animation: rubberBand .8s;
+
+    &:after {
+      transform: translateX(50%);
+      transition: transform .4s ease;
+      transition-delay: .7s;
+    }
+
+    #border,
+    #arrow {
+      display: none;
+    }
+
+    #check {
+      transform: scale(1);
+      transition: all .2s ease;
+      transition-delay: .2s;
+    }
+  }
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.15, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.15, 1);
+  }
+  50% {
+    transform: scale3d(1.10, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+// dribbble 
+.credit {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  transition: all .2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  opacity: .6;
+
+  img {
+    width: 72px;
+  }
+
+  &:hover {
+    transform: scale(.95);
+  }
 }
