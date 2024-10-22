@@ -1358,6 +1358,26 @@ body {
 .darkmode .profile-container img {
   border: 0.2rem solid #bb86fc;
 }
+.darkmode .btn-circle-download:hover {
+  background: rgba(187, 134, 252, 0.2);
+}
+.darkmode .btn-circle-download:hover #arrow path,
+.darkmode .btn-circle-download:hover #arrow polyline {
+  stroke: #bb86fc;
+}
+.darkmode .btn-circle-download.load {
+  background: rgba(187, 134, 252, 0.2);
+}
+.darkmode .btn-circle-download.load #arrow path,
+.darkmode .btn-circle-download.load #arrow polyline {
+  stroke: #bb86fc;
+}
+.darkmode .btn-circle-download.load #border {
+  stroke: #bb86fc;
+}
+.darkmode .btn-circle-download.done {
+  background: #bb86fc;
+}
 
 /*
 
@@ -1453,7 +1473,7 @@ bouton download
   width: 48px;
   margin: auto;
   border-radius: 100%;
-  background: #E8EAED;
+  background: #e8eaed;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -1486,7 +1506,7 @@ bouton download
   position: absolute;
   top: 14px;
   left: 17px;
-  stroke: #9098A9;
+  stroke: #9098a9;
   transition: all 0.2s ease;
 }
 .btn-circle-download svg#check {
@@ -1497,26 +1517,26 @@ bouton download
   transform: scale(0);
 }
 .btn-circle-download:hover {
-  background: rgba(0, 119, 255, 0.2);
+  background: rgba(23, 208, 213, 0.2);
 }
 .btn-circle-download:hover #arrow path,
 .btn-circle-download:hover #arrow polyline {
-  stroke: #0077FF;
+  stroke: #17d0d5;
 }
 .btn-circle-download.load {
-  background: rgba(0, 119, 255, 0.2);
+  background: rgba(23, 208, 213, 0.2);
 }
 .btn-circle-download.load #arrow path,
 .btn-circle-download.load #arrow polyline {
-  stroke: #0077FF;
+  stroke: #17d0d5;
 }
 .btn-circle-download.load #border {
-  stroke: #0077FF;
+  stroke: #17d0d5;
   stroke-dasharray: 144;
   stroke-dashoffset: 0;
 }
 .btn-circle-download.done {
-  background: #0077FF;
+  background: #17d0d5;
   animation: rubberBand 0.8s;
 }
 .btn-circle-download.done:after {
@@ -1556,21 +1576,6 @@ bouton download
   to {
     transform: scale3d(1, 1, 1);
   }
-}
-.credit {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  transition: all 0.2s ease;
-  -webkit-user-select: none;
-  user-select: none;
-  opacity: 0.6;
-}
-.credit img {
-  width: 72px;
-}
-.credit:hover {
-  transform: scale(0.95);
 }
 
 /*# sourceMappingURL=index.css.map */

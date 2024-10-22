@@ -756,7 +756,7 @@ $(".btn-circle-download").click(function() {
       // Crée un élément <a> temporaire pour déclencher le téléchargement
       var link = document.createElement('a');
       link.href = "fichiers/images/cv.pdf"; // Remplacez par le lien de votre CV
-      link.download = "Mon_CV_Jeremy_Huleux.pdf"; // Nom du fichier lors du téléchargement
+      link.download = "A_recruter_CV_Jeremy_Huleux.pdf"; // Nom du fichier lors du téléchargement
       document.body.appendChild(link); // Ajoute le lien à la page
       link.click(); // Simule un clic sur le lien
       document.body.removeChild(link); // Supprime le lien après le téléchargement

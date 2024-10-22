@@ -1488,6 +1488,41 @@ body {
   .profile-container img {
     border: 0.2rem solid #bb86fc;
   }
+  
+  $color: #bb86fc; // Couleur pour le mode sombre
+
+  .btn-circle-download {
+    &:hover {
+      background: rgba($color, 0.2);
+
+      #arrow {
+        path,
+        polyline {
+          stroke: $color;
+        }
+      }
+    }
+
+    &.load {
+      background: rgba($color, 0.2);
+
+      #arrow {
+        path,
+        polyline {
+          stroke: $color;
+        }
+      }
+
+      #border {
+        stroke: $color;
+      }
+    }
+
+    &.done {
+      background: $color;
+    }
+  }
+  
 }
 
 /*
@@ -1516,7 +1551,7 @@ SECTION CV
 }
 
 .profile-container img {
-  width: 90%; 
+  width: 90%;
   border-radius: 50%;
   border: 0.2rem solid #17d0d5;
 }
@@ -1529,8 +1564,8 @@ SECTION CV
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border-top: 0.2rem solid #fff; 
-  border-bottom: 0.2rem solid #fff; 
+  border-top: 0.2rem solid #fff;
+  border-bottom: 0.2rem solid #fff;
   border-right: 0.2rem solid #17d0d5;
   border-left: 0.2rem solid #17d0d5;
   animation: aboutSpinner 4s infinite;
@@ -1575,15 +1610,13 @@ SECTION CV
   }
 }
 
-
 /*
 
 bouton download
 
 */
-$color: #0077FF;
 
-
+$color: #17d0d5;
 
 .btn-circle-download {
   position: relative;
@@ -1591,10 +1624,10 @@ $color: #0077FF;
   width: 48px;
   margin: auto;
   border-radius: 100%;
-  background: #E8EAED;
+  background: #e8eaed;
   cursor: pointer;
   overflow: hidden;
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 
   &:after {
     content: "";
@@ -1602,7 +1635,12 @@ $color: #0077FF;
     display: block;
     width: 200%;
     height: 100%;
-    background-image: linear-gradient(100deg, rgba(white, 0), rgba(white, .25), rgba(white, 0));
+    background-image: linear-gradient(
+      100deg,
+      rgba(white, 0),
+      rgba(white, 0.25),
+      rgba(white, 0)
+    );
     transform: translateX(-100%);
   }
 
@@ -1619,15 +1657,15 @@ $color: #0077FF;
       stroke: none;
       stroke-dasharray: 144;
       stroke-dashoffset: 144;
-      transition: all .9s linear;
+      transition: all 0.9s linear;
     }
 
     &#arrow {
       position: absolute;
       top: 14px;
       left: 17px;
-      stroke: #9098A9;
-      transition: all .2s ease;
+      stroke: #9098a9;
+      transition: all 0.2s ease;
     }
 
     &#check {
@@ -1640,7 +1678,7 @@ $color: #0077FF;
   }
 
   &:hover {
-    background: rgba($color, .2);
+    background: rgba($color, 0.2);
 
     #arrow {
       path,
@@ -1651,7 +1689,7 @@ $color: #0077FF;
   }
 
   &.load {
-    background: rgba($color, .2);
+    background: rgba($color, 0.2);
 
     #arrow {
       path,
@@ -1669,12 +1707,12 @@ $color: #0077FF;
 
   &.done {
     background: $color;
-    animation: rubberBand .8s;
+    animation: rubberBand 0.8s;
 
     &:after {
       transform: translateX(50%);
-      transition: transform .4s ease;
-      transition-delay: .7s;
+      transition: transform 0.4s ease;
+      transition-delay: 0.7s;
     }
 
     #border,
@@ -1684,8 +1722,8 @@ $color: #0077FF;
 
     #check {
       transform: scale(1);
-      transition: all .2s ease;
-      transition-delay: .2s;
+      transition: all 0.2s ease;
+      transition-delay: 0.2s;
     }
   }
 }
@@ -1701,34 +1739,15 @@ $color: #0077FF;
     transform: scale3d(0.75, 1.15, 1);
   }
   50% {
-    transform: scale3d(1.10, 0.85, 1);
+    transform: scale3d(1.1, 0.85, 1);
   }
   65% {
-    transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(0.95, 1.05, 1);
   }
   75% {
-    transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, 0.95, 1);
   }
   to {
     transform: scale3d(1, 1, 1);
-  }
-}
-
-// dribbble 
-.credit {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  transition: all .2s ease;
-  -webkit-user-select: none;
-  user-select: none;
-  opacity: .6;
-
-  img {
-    width: 72px;
-  }
-
-  &:hover {
-    transform: scale(.95);
   }
 }
