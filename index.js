@@ -696,6 +696,11 @@ $(document).ready(function () {
           "background",
           "rgba(0,0,0,0.5)"
         );
+        // Réinitialiser la transformation scale à 1
+        d3.select(chartId + " g.slice:nth-child(" + (i + 1) + ") path")
+        .transition()
+        .duration(200)
+        .attr("transform", "scale(1)");  // Retour à l'état d'origine
       });
 
     legend.append("span").text(function (d, i) {

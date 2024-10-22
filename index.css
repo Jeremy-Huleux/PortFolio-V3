@@ -1429,19 +1429,19 @@ SECTION CV
     transform: translate(-50%, -50%) rotate(0deg);
   }
   10% {
-    transform: translate(-50%, -50%) rotate(30deg);
-  }
-  20% {
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-  30% {
-    transform: translate(-50%, -50%) rotate(180deg);
-  }
-  40% {
     transform: translate(-50%, -50%) rotate(270deg);
   }
+  20% {
+    transform: translate(-50%, -50%) rotate(290deg);
+  }
+  30% {
+    transform: translate(-50%, -50%) rotate(280deg);
+  }
+  40% {
+    transform: translate(-50%, -50%) rotate(300deg);
+  }
   50% {
-    transform: translate(-50%, -50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(350deg);
   }
   51% {
     transform: translate(-50%, -50%) rotate(360deg);
