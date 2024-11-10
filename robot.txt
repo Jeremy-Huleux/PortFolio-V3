@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /fichiers/
+
+# Sitemap
+Sitemap: http://jeremy-huleux.fr/sitemap.xml
