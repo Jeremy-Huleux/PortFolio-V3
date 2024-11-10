@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /fichiers/
+Allow: /favicon/
 
 # Sitemap
 Sitemap: http://jeremy-huleux.fr/sitemap.xml
