@@ -388,9 +388,25 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 })(window.jQuery);
 
+// Déclarez une variable globale pour l'instance de Typed pour pouvoir la mettre en pause dans le code
+let typed;
+
 $("document").ready(function () {
   handleEscKey();
   handleTyping();
+    // Mettre en pause Typed.js lorsque le modal est activé
+    $('.modal').on('show.bs.modal', function() {
+      if (typed) {
+        typed.stop();
+      }
+    });
+  
+    // Reprendre Typed.js lorsque le modal est fermé
+    $('.modal').on('hide.bs.modal', function() {
+      if (typed) {
+        typed.start();
+      }
+    });
 });
 
 // LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar" ou ferme la modal
@@ -422,8 +438,9 @@ function handleEscKey() {
 
 // TYPED : remplacement après le backspace
 function handleTyping() {
-  $(".element").typed({
-    strings: [
+  //$(".element").typed({
+  typed = new Typed('.element', {  
+  strings: [
       "un développeur full-stack",
       "un amoureux des canidés",
       "un junior en dev",
@@ -445,6 +462,7 @@ function handleTyping() {
     showCursor: true,
     cursorChar: "|",
   });
+
 }
 
 /*
