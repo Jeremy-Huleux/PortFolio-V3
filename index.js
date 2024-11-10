@@ -407,7 +407,6 @@ $("document").ready(function () {
       typed.start();
     }
   });
-  captchaExec();
 });
 
 // LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar" ou ferme la modal
@@ -784,21 +783,3 @@ $(".btn-circle-download").click(function () {
     document.body.removeChild(link); // Supprime le lien après le téléchargement
   }, 2000);
 });
-
-//captcha
-
-// Fonction asynchrone pour exécuter le captcha
-async function captchaExec() {
-  var contactButton = document.querySelector('.contactButton');
-  if (contactButton) {
-    contactButton.addEventListener('click', async function(event) {
-      event.preventDefault(); // Empêche le comportement par défaut du bouton
-      try {
-        await grecaptcha.execute();
-        // Ajoutez ici le code à exécuter après la réussite du captcha
-      } catch (error) {
-        console.error('Erreur lors de l\'exécution du captcha:', error);
-      }
-    });
-  }
-}
