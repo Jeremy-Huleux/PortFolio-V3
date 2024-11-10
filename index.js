@@ -394,19 +394,20 @@ let typed;
 $("document").ready(function () {
   handleEscKey();
   handleTyping();
-    // Mettre en pause Typed.js lorsque le modal est activé
-    $('.modal').on('show.bs.modal', function() {
-      if (typed) {
-        typed.stop();
-      }
-    });
-  
-    // Reprendre Typed.js lorsque le modal est fermé
-    $('.modal').on('hide.bs.modal', function() {
-      if (typed) {
-        typed.start();
-      }
-    });
+  // Mettre en pause Typed.js lorsque le modal est activé
+  $(".modal").on("show.bs.modal", function () {
+    if (typed) {
+      typed.stop();
+    }
+  });
+
+  // Reprendre Typed.js lorsque le modal est fermé
+  $(".modal").on("hide.bs.modal", function () {
+    if (typed) {
+      typed.start();
+    }
+  });
+  captchaExec();
 });
 
 // LORSQU'ON APPUIE SUR ÉCHAP, on retourne au "sidebar" ou ferme la modal
@@ -435,12 +436,11 @@ function handleEscKey() {
   });
 }
 
-
 // TYPED : remplacement après le backspace
 function handleTyping() {
   //$(".element").typed({
-  typed = new Typed('.element', {  
-  strings: [
+  typed = new Typed(".element", {
+    strings: [
       "un développeur full-stack",
       "un amoureux des canidés",
       "un junior en dev",
@@ -462,7 +462,6 @@ function handleTyping() {
     showCursor: true,
     cursorChar: "|",
   });
-
 }
 
 /*
@@ -716,9 +715,9 @@ $(document).ready(function () {
         );
         // Réinitialiser la transformation scale à 1
         d3.select(chartId + " g.slice:nth-child(" + (i + 1) + ") path")
-        .transition()
-        .duration(200)
-        .attr("transform", "scale(1)");  // Retour à l'état d'origine
+          .transition()
+          .duration(200)
+          .attr("transform", "scale(1)"); // Retour à l'état d'origine
       });
 
     legend.append("span").text(function (d, i) {
@@ -750,14 +749,14 @@ $(document).ready(function () {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const toggleButton = document.getElementById('darkmode-toggle');
-  toggleButton.addEventListener('click', function() {
-    document.body.classList.toggle('darkmode');
-    if (document.body.classList.contains('darkmode')) {
-      toggleButton.textContent = 'Désactiver le mode sombre';
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("darkmode-toggle");
+  toggleButton.addEventListener("click", function () {
+    document.body.classList.toggle("darkmode");
+    if (document.body.classList.contains("darkmode")) {
+      toggleButton.textContent = "Désactiver le mode sombre";
     } else {
-      toggleButton.textContent = 'Activer le mode sombre';
+      toggleButton.textContent = "Activer le mode sombre";
     }
   });
 });
@@ -768,21 +767,38 @@ bouton download
 
 */
 
-$(".btn-circle-download").click(function() {
+$(".btn-circle-download").click(function () {
   $(this).addClass("load");
-  setTimeout(function() {
+  setTimeout(function () {
     $(".btn-circle-download").addClass("done");
   }, 1000);
-  setTimeout(function() {
+  setTimeout(function () {
     $(".btn-circle-download").removeClass("load done");
     // Déclenche le téléchargement du CV après l'animation
-      // Crée un élément <a> temporaire pour déclencher le téléchargement
-      var link = document.createElement('a');
-      link.href = "fichiers/images/cv.pdf"; // Remplacez par le lien de votre CV
-      link.download = "A_recruter_CV_Jeremy_Huleux.pdf"; // Nom du fichier lors du téléchargement
-      document.body.appendChild(link); // Ajoute le lien à la page
-      link.click(); // Simule un clic sur le lien
-      document.body.removeChild(link); // Supprime le lien après le téléchargement
+    // Crée un élément <a> temporaire pour déclencher le téléchargement
+    var link = document.createElement("a");
+    link.href = "fichiers/images/cv.pdf"; // Remplacez par le lien de votre CV
+    link.download = "A_recruter_CV_Jeremy_Huleux.pdf"; // Nom du fichier lors du téléchargement
+    document.body.appendChild(link); // Ajoute le lien à la page
+    link.click(); // Simule un clic sur le lien
+    document.body.removeChild(link); // Supprime le lien après le téléchargement
   }, 2000);
-  
 });
+
+//captcha
+
+// Fonction asynchrone pour exécuter le captcha
+async function captchaExec() {
+  var contactButton = document.querySelector('.contactButton');
+  if (contactButton) {
+    contactButton.addEventListener('click', async function(event) {
+      event.preventDefault(); // Empêche le comportement par défaut du bouton
+      try {
+        await grecaptcha.execute();
+        // Ajoutez ici le code à exécuter après la réussite du captcha
+      } catch (error) {
+        console.error('Erreur lors de l\'exécution du captcha:', error);
+      }
+    });
+  }
+}
